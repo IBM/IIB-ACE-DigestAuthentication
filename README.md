@@ -45,7 +45,7 @@ https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
 
 # Steps
 1.	[Create Service](#1-create-service)
-2.	[Deploy service locally and test](#2-deploy-service locally-and-test) 
+2.	[Deploy service locally and test](#2-deploy-service-locally-and-test) 
 3.	[Create Kubernetes cluster and deploy on IBM cloud](#3-create-kubernetes-cluster-and-deploy-on-IBM-cloud)
 4.	[Test API on Cloud](#4-test-api-on-cloud)
 
