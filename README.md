@@ -45,9 +45,9 @@ https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
 
 # Steps
 1.	[Create Service](#1-create-service)
-2.	[Deploy service locally and test](#2 deploy-service locally-and-test) 
-3.	Create Kubernetes cluster and deploy on IBM cloud
-4.	Test API on Cloud
+2.	[Deploy service locally and test](#2-deploy-service locally-and-test) 
+3.	[Create Kubernetes cluster and deploy on IBM cloud](#3-create-kubernetes-cluster-and-deploy-on-IBM-cloud)
+4.	[Test API on Cloud](#4-test-api-on-cloud)
 
 ### 1. Create Service
 Main message flow
@@ -146,6 +146,7 @@ Steps:
 3. Create private repository: It takes some time for cluster to be created hence in the meantime please create your private repository. This private repository is a replica of the IBM public repository with docker image of IBM Integration Bus.
 
 ![](images/privateRepo.jpg)
+
 ![](images/publicRepo.jpg)
 
 4. Once the cluster is in normal state then issue below commands to access your cluster
@@ -159,6 +160,7 @@ kubectl get nodes
 ```
 
 5. Once the above commands as executed successfully then we need to deploy our IIB image on the kubernetes cluster and expose the webadmin and http port. This can be done with below commands
+
 ```
 kubectl run ku-iib --image=registry.eu-gb.bluemix.net/rriibns/rriibrepo --env="LICENSE=accept" --env="NODENAME=IB10NODE"
 kubectl expose deployment/ku-iib --type=NodePort --port=4414 --target-port=4414 --name=ib10node-svc-4414
@@ -169,8 +171,8 @@ Now one can see the information on kubernetes dashborad as below
 ![](images/kuDashboard.jpg)
 
 6. To access your IIB webadmin we will be public ip. Please run below command to get the info.
-`
-bx cs workers mycluster
+
+`bx cs workers mycluster
 `
 7. Under services link you can check port on which the IIB webadmin and http port are mapped.
 
