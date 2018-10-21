@@ -45,13 +45,15 @@ https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
 
 # Steps
 1.	[Create Service](#1-create-service)
-2.	[Deploy service locally and test ] (#2 deploy-service locally-and-test) 
+2.	[Deploy service locally and test](#2 deploy-service locally-and-test) 
 3.	Create Kubernetes cluster and deploy on IBM cloud
 4.	Test API on Cloud
 
 ### 1. Create Service
 Main message flow
 This is the main flow where request is received at Http Input node and once the transaction is complete it responds by the HTTP reply node.
+
+![](images/mainflow.jpg)
 
 Below are the brief details on the functionality of each node. These nodes functionality can be replicated by similar tools/nodes available on other development platforms.
 
@@ -104,5 +106,33 @@ For demo purpose we will create 2 services. One with authorisation logic and ano
 `MyHttpApiClient`: This service is a simple client without any logic and it will be consuming the first service. This client service will be exposed on the uri /myhttpapiclient
 
 For simplicity, we will package the service and the client service in a single bar named `DigestAuthenticationDemo.bar`.
+
+![](images/preparebar.jpg)
+
+Test locally: In the test, we have used a sample api using digest authentication and is available on internet for testing. Below are the details which can also be found in code.
+
+```
+url: http://httpbin.org/digest-auth/auth/user/passwd
+
+username: user
+
+Password: passwd
+```
+
+Below is the result on testing on local environment.
+
+![](images/testlocal.jpg)
+
+IBM integration bus provide a very useful functionality called flow exerciser which captures the path which the transaction as taken for each request. 
+
+First request: On the first transaction, we can see that the transaction went through digest authentication subflow to do all the logic for authentication.
+
+![](images/firstreq.jpg)
+
+Next request: On the second or the next requests, Flow has skipped the digest authentication subflow an just reused the authorisation header from cache for better performance. Since the external api used is a simple one hence is not secured and authorisation headers or cookies can be reused. For a real environment one need to recall this digest authentication subflow to re-create headers/cookies on rejection.
+
+![](images/nextreq.jpg)
+
+
 
 
