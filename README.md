@@ -172,8 +172,9 @@ Now one can see the information on kubernetes dashborad as below
 
 6. To access your IIB webadmin we will be public ip. Please run below command to get the info.
 
-`bx cs workers mycluster
-`
+```
+bx cs workers mycluster
+```
 7. Under services link you can check port on which the IIB webadmin and http port are mapped.
 
 ![](images/kuServices.jpg)
