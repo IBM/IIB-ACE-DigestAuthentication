@@ -45,7 +45,7 @@ https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
 
 # Steps
 1.	[Create Service](#1-create-service)
-2.	[Deploy service locally and test ] (#2 Deploy service locally and test) 
+2.	[Deploy service locally and test ] (#2 deploy-service locally-and-test) 
 3.	Create Kubernetes cluster and deploy on IBM cloud
 4.	Test API on Cloud
 
@@ -72,7 +72,7 @@ Below are the brief details on the functionality of each node. These nodes funct
 
 `ComputeResponse`: Whenever the first time a request is sent to the digest authentication enabled server, it will fail. The reason for failure is that the request sent to the server is plain http but for successful authentication, it needs to be with an authorisation header or cookies. There are few steps in this node to built core logic
 
-1. `Capturing response data`: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP header . In WWW-Authenticate element of header response there will be information about nounce, relam, qop which will be used to create authorisation header.
+1. Capturing response data: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP header . In WWW-Authenticate element of header response there will be information about nounce, relam, qop which will be used to create authorisation header.
 
 ![](images/Capturingresponsedata.jpg)
 
@@ -88,13 +88,21 @@ Below are the brief details on the functionality of each node. These nodes funct
 
 ![](images/authorizationHeader.jpg)
 
-Set Header: This node is used to save the authorisation header in the http request header before sending request to the server for authentication.
+`Set Header`: This node is used to save the authorisation header in the http request header before sending request to the server for authentication.
 
-Set cookies: After sending the request with authorisation header, the response from the server should be a success. With this success response the server sends the cookie information which can be used to authenticate without calculating the authorisation header every time. One can either store cookies or the authorisation header to successfully authenticate the request next time.
+`Set cookies`: After sending the request with authorisation header, the response from the server should be a success. With this success response the server sends the cookie information which can be used to authenticate without calculating the authorisation header every time. One can either store cookies or the authorisation header to successfully authenticate the request next time.
 
 ![](images/cookies.jpg)
 
 
 ### 2. Deploy service locally and test 
+
+For demo purpose we will create 2 services. One with authorisation logic and another as a sample client to access the first service. 
+
+`DigestAuthentication`: This service contains the logic of implementing digest authorisation. This service will be exposed on uri /digesthttpapi for external clients to access.
+
+`MyHttpApiClient`: This service is a simple client without any logic and it will be consuming the first service. This client service will be exposed on the uri /myhttpapiclient
+
+For simplicity, we will package the service and the client service in a single bar named `DigestAuthenticationDemo.bar`.
 
 
