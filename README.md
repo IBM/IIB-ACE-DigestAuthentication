@@ -134,5 +134,56 @@ Next request: On the second or the next requests, Flow has skipped the digest au
 ![](images/nextreq.jpg)
 
 
+### 3. Create cluster and deploy on IBM cloud
+Steps:
+
+1. Login to your IBM cloud account: https://www.ibm.com/cloud/
+
+2. Create cluster: Under containers section, go to clusters and click on create cluster.
+
+![](images/clusters.jpg)
+
+3. Create private repository: It takes some time for cluster to be created hence in the meantime please create your private repository. This private repository is a replica of the IBM public repository with docker image of IBM Integration Bus.
+
+![](images/privateRepo.jpg)
+![](images/publicRepo.jpg)
+
+4. Once the cluster is in normal state then issue below commands to access your cluster
+
+```
+ibmcloud login --sso -a https://api.eu-gb.bluemix.net
+ibmcloud cs region-set uk-south
+ibmcloud cs cluster-config mycluster
+export KUBECONFIG=%HOMEPATH%\.bluemix\plugins\container-service\clusters\mycluster\kube-config-mil01-mycluster.yml
+kubectl get nodes
+```
+
+5. Once the above commands as executed successfully then we need to deploy our IIB image on the kubernetes cluster and expose the webadmin and http port. This can be done with below commands
+```
+kubectl run ku-iib --image=registry.eu-gb.bluemix.net/rriibns/rriibrepo --env="LICENSE=accept" --env="NODENAME=IB10NODE"
+kubectl expose deployment/ku-iib --type=NodePort --port=4414 --target-port=4414 --name=ib10node-svc-4414
+kubectl expose deployment/ku-iib --type=NodePort --port=7800 --target-port=7800 --name=ib10node-http-7800
+```
+Now one can see the information on kubernetes dashborad as below
+
+![](images/kuDashboard.jpg)
+
+6. To access your IIB webadmin we will be public ip. Please run below command to get the info.
+`
+bx cs workers mycluster
+`
+7. Under services link you can check port on which the IIB webadmin and http port are mapped.
+
+![](images/kuServices.jpg)
+
+8. Deploy the bar on IBM cloud : Access the IIB web admin on from the IP and port from above steps and then deploy the DigestAuthenticationDemo.bar
+
+![](images/IIB10NodeCloud.jpg)
+
+### 4. Test API on Cloud
+
+Test the client application using IBM cloud public IP and port. It should produce same result as local tests.
+
+![](images/CloudTest.jpg)
 
 
