@@ -28,3 +28,32 @@ When the reader has completed this code pattern, they will understand how to:
 * [Docker](https://www.docker.com/): Docker provides container software that is ideal for developers and teams looking to get started and experimenting with container-based applications. 
 * [Kubernetes](https://kubernetes.io/): Kubernetes is an open-source container-orchestration system for automating deployment, scaling and management of containerized applications.
 * [SoapUI](https://www.soapui.org/): SoapUI is an open-source web service testing application for service-oriented architectures and representational state transfers. 
+
+## Featured technologies
+* [IBM Integration bus](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm): IIB allows business information to flow between disparate applications across multiple hardware and software platforms. Rules can be applied to the data flowing through the message broker to route and transform the information IIB provides access to various inbuilt nodes which provide ready to use capability.
+* [Digest Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication): Digest access authentication is one of the agreed-upon methods a web server can use to negotiate credentials, such as username or password, with a user's web browser. This can be used to confirm the identity of a user before sending sensitive information, such as online banking transaction history.
+
+# Watch the Video
+
+To-be-included
+
+## Prerequisites:
+* Access to IBM cloud tools: To interact with IBM cloud, the IBM Cloud CLI will need to be installed beforehand. Please follow steps in below link to setup your IBM cloud tools.
+https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
+
+* IBM Integration Bus toolkit: In this code pattern we will use IIB toolkit version 10.0.0.9 to demo the logic and implementation. This logic can be implemented by any development tool available to you. 
+
+# Steps
+1.	[Create Service](#1-create-service)
+2.	[Deploy service locally and test ] (#2 Deploy service locally and test) 
+3.	Create Kubernetes cluster and deploy on IBM cloud
+4.	Test API on Cloud
+
+### 1. Create Service
+Main message flow
+This is the main flow where request is received at Http Input node and once the transaction is complete it responds by the HTTP reply node.
+
+### 2. Deploy service locally and test 
+
+
+
