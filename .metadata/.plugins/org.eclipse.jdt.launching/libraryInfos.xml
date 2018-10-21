@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><libraryInfos>
+<libraryInfo home="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk" version="1.7.0">
+<bootpath>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\bin\compressedrefs\jclSC170\vm.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\se-service.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\math.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmorb.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmorbapi.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmcfw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmpkcs.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmcertpathfw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmjgssfw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmjssefw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmsaslfw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmjcefw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmjgssprovider.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmjsseprovider2.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmcertpathprovider.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\xmldsigfw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\xml.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\charsets.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\resources.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\rt.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\dataaccess.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmgpu.jar"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre" version="1.7.0">
+<bootpath>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\bin\compressedrefs\jclSC170\vm.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\se-service.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\math.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmorb.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmorbapi.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmcfw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmpkcs.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmcertpathfw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmjgssfw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmjssefw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmsaslfw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmjcefw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmjgssprovider.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmjsseprovider2.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmcertpathprovider.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\xmldsigfw.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\xml.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\charsets.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\resources.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\rt.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\dataaccess.jar"/>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ibmgpu.jar"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files\IBM\IIB\10.0.0.9\common\jdk\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

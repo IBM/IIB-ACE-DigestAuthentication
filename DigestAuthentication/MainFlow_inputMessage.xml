@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessagePool xmlns="http://wwww.ibm.com/iib/test/1.0.0">
+    <SOAPInputMessage WSDL_URI="platform:/resource/DigestAuthentication/DigestAuthenticationIS.wsdl" WSDL_OPERATION_OUT_NAME="authenticateResponse" WSDL_OPERATION_NAME="authenticate" WSDL_OPERATION_IN_NAME="authenticateRequest" timestamp="1457625509787" nodeId="FCMComposite_1_2" name="new message 1" id="1457625509787-6">
+        <plainText>%3C%3Fxml+version%3D%221.0%22+encoding%3D%22UTF-8%22%3F%3E%3Ctns0%3AEnvelope+xmlns%3Atns0%3D%22http%3A%2F%2Fschemas.xmlsoap.org%2Fsoap%2Fenvelope%2F%22+xmlns%3Atns1%3D%22http%3A%2F%2FDigestAuthenticationIS%22+xmlns%3Axsi%3D%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema-instance%22%3E%0D%0A++%3Ctns0%3AHeader%2F%3E%0D%0A++%3Ctns0%3ABody%3E%0D%0A++++%3Ctns1%3Aauthenticate%3E%0D%0A+%3Crequest%3E%0D%0A++++++++++++%3Cpayload%3EHello+%21%21%21+This+is+the+payload%3C%2Fpayload%3E%0D%0A++++++++++++%3Cusername%3Euser%3C%2Fusername%3E%0D%0A++++++++++++%3Cpassword%3Epasswd1%3C%2Fpassword%3E%0D%0A++++++++++++%3Curl%3Ehttps%3A%2F%2Fhttpbin.org%2Fdigest-auth%2Fauth%2Fuser%2Fpasswd%3C%2Furl%3E%0D%0A+++++++++%3C%2Frequest%3E%0D%0A++++%3C%2Ftns1%3Aauthenticate%3E%0D%0A++%3C%2Ftns0%3ABody%3E%0D%0A%3C%2Ftns0%3AEnvelope%3E</plainText>
+    </SOAPInputMessage>
+</MessagePool>

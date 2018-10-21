@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+runtimes=<?xml version\="1.0" encoding\="UTF-8"?><runtimes>\r\n  <runtime id\="com.ibm.ws.ast.st.runtime.v61.mb" id-set\="true" location\="C\:/Program Files/IBM/IIB/10.0.0.9/tools/runtimes/mb_v61_stub" locked\="true" name\="WebSphere Message Broker stub" runtime-type-id\="com.ibm.ws.ast.st.runtime.v61.mb" stub\="true" timestamp\="0"/>\r\n</runtimes>

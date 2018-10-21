@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="DigestAuthenticationIS" targetNamespace="http://DigestAuthenticationIS" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://DigestAuthenticationIS" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="DigestAuthenticationISHttpBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  
+  
+  
+  
+  <wsdl:types>
+    
+        <xsd:schema targetNamespace="http://DigestAuthenticationIS" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="DigestAuthenticationIS_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="authenticateRequestMsg">
+    <wsdl:part element="tns:authenticate" name="authenticateParameters"/>
+  </wsdl:message>
+  <wsdl:message name="authenticateResponseMsg">
+    <wsdl:part element="tns:authenticateResponse" name="authenticateResult"/>
+  </wsdl:message>
+    <wsdl:portType name="DigestAuthenticationIS">
+    <wsdl:operation name="authenticate">
+            <wsdl:input message="tns:authenticateRequestMsg" name="authenticateRequest"/>
+            <wsdl:output message="tns:authenticateResponseMsg" name="authenticateResponse"/>
+    </wsdl:operation>
+    </wsdl:portType>
+  <wsdl:binding name="DigestAuthenticationISHttpBinding" type="tns:DigestAuthenticationIS">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="authenticate">
+            <soap:operation soapAction="http://DigestAuthenticationIS/authenticate"/>
+            <wsdl:input name="authenticateRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+      <wsdl:output name="authenticateResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+    </wsdl:operation>
+    </wsdl:binding>
+  <wsdl:service name="DigestAuthenticationISHttpService">
+    <wsdl:port binding="tns:DigestAuthenticationISHttpBinding" name="DigestAuthenticationISHttpPort">
+      <soap:address location="http://localhost:7800/DigestAuthenticationIS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

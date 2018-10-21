@@ -1,0 +1,11 @@
+
+
+CREATE COMPUTE MODULE DigestAuthentication_SetHTTPDestination
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		    
+    	SET InputLocalEnvironment.Destination.HTTP.RequestURL =	 Environment.Variables.EndPointUrl;
+        SET InputLocalEnvironment.Destination.HTTP.RequestLine.Method = 'GET';
+		RETURN TRUE;
+	END;
+END MODULE;

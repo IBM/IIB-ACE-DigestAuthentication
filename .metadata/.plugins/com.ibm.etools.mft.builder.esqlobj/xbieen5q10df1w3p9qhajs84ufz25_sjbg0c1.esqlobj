@@ -1,0 +1,9 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+      BEGIN
+           
+            IF AuthHeaderCache IS NULL THEN --Check if Shared variable already have some value.
+            SET SHARVAR = 'default'; --Assign a value to shared variable.
+            END IF;
+           
+            RETURN TRUE;
+      END;

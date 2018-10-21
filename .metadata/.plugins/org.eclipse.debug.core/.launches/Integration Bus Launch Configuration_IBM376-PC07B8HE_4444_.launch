@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><launchConfiguration type="com.ibm.etools.mft.debug.internal.mbLaunchConfigurationDelegate">
+<stringAttribute key="BRName" value="LocalBroker"/>
+<stringAttribute key="ConnectionInfo" value=""/>
+<stringAttribute key="EGName" value="default"/>
+<stringAttribute key="com.ibm.debug.wsa.attr_vm_name" value="IBM J9 VM"/>
+<stringAttribute key="com.ibm.debug.wsa.attr_vm_version" value="1.7.0"/>
+<intAttribute key="com.ibm.debug.wsa.attr_was_version" value="61"/>
+<stringAttribute key="com.ibm.etools.mft.debug.attr_hostname" value="IBM376-PC07B8HE"/>
+<stringAttribute key="com.ibm.etools.mft.debug.attr_javaportname" value="4444"/>
+<stringAttribute key="org.eclipse.debug.core.source_locator_id" value="com.ibm.etools.mft.debug.sourcelookup.MBSourceLookupDirector"/>
+<stringAttribute key="org.eclipse.debug.core.source_locator_memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sourceLookupDirector&gt;&#13;&#10;&lt;sourceContainers duplicates=&quot;true&quot;&gt;&#13;&#10;&lt;container memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;flowProject name=&amp;quot;DigestAuthentication&amp;quot;/&amp;gt;&quot; typeId=&quot;com.ibm.etools.mft.debug.containerType.flowProject&quot;/&gt;&#13;&#10;&lt;container memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;flowProject name=&amp;quot;DigestAuthenticationIS&amp;quot;/&amp;gt;&quot; typeId=&quot;com.ibm.etools.mft.debug.containerType.flowProject&quot;/&gt;&#13;&#10;&lt;container memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;flowProject name=&amp;quot;HttpClient&amp;quot;/&amp;gt;&quot; typeId=&quot;com.ibm.etools.mft.debug.containerType.flowProject&quot;/&gt;&#13;&#10;&lt;container memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;default/&amp;gt;&quot; typeId=&quot;org.eclipse.debug.core.containerType.default&quot;/&gt;&#13;&#10;&lt;/sourceContainers&gt;&#13;&#10;&lt;/sourceLookupDirector&gt;"/>
+</launchConfiguration>

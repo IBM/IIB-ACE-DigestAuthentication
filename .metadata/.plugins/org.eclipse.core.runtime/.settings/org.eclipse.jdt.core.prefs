@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=
+org.eclipse.jdt.core.classpathVariable.COMMON_CLASSES_HOME=C\:/Program Files/IBM/IIB/10.0.0.9/common/classes
+org.eclipse.jdt.core.classpathVariable.JCN_HOME=C\:/Program Files/IBM/IIB/10.0.0.9/tools/plugins/com.ibm.etools.mft.jcn_10.0.0.9/
+org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><?pde version="3.8"?><target name="Running Platform" sequenceNumber="4">
+<locations>
+<location configuration="/C:/Users/IBM_ADMIN/AppData/Local/IBM/IIBT10-config/10.0.0.9/configuration/" path="${eclipse_home}" type="Profile"/>
+</locations>
+<environment>
+<os>win32</os>
+<ws>win32</ws>
+<arch>x86_64</arch>
+<nl>en_GB</nl>
+</environment>
+<launcherArgs>
+<vmArgs>-Xquickstart -Xms256m -Xmx1024m -Xmnx64m -Xgcpolicy:gencon -Xss2m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+UseParallelGC -Declipse.p2.data.area=@config.dir/../p2/</vmArgs>
+</launcherArgs>
+</target>

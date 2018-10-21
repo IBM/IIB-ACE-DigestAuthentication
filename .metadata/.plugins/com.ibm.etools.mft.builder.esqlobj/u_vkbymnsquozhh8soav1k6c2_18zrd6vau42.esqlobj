@@ -1,0 +1,19 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		DECLARE ref REFERENCE TO Environment;
+		SET OutputRoot = InputRoot;
+    	--Defalut User is 'user'and password is 'passwd'
+        SET Environment.Variables.UserName = 'user';
+    	SET Environment.Variables.Password =  'passwd';
+        SET Environment.Variables.EndPointUrl='http://httpbin.org/digest-auth/auth/user/passwd';
+        
+        --Check if Shared variable already have some value.
+        IF AuthHeaderCache IS NULL THEN          
+            PROPAGATE TO TERMINAL 'out';            
+        ELSE        
+            PROPAGATE TO TERMINAL 'out1';
+        END IF;
+
+		RETURN FALSE;
+	END;
+

@@ -1,0 +1,2 @@
+CREATE COMPUTE MODULE DigestAuthentication_SetDigestHdr
+	CREATE FUNCTION Main() RETURNS BOOLEAN

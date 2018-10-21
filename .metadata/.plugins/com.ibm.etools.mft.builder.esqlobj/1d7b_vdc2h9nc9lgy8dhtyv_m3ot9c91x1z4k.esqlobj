@@ -1,0 +1,11 @@
+CREATE COMPUTE MODULE SharedVariable_Compute
+      CREATE FUNCTION Main() RETURNS BOOLEAN
+      BEGIN
+           
+            IF SHARVAR IS NULL THEN --Check if Shared variable already have some value.
+            SET SHARVAR = 'default'; --Assign a value to shared variable.
+            END IF;
+           
+            RETURN TRUE;
+      END;
+END MODULE;

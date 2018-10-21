@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pluginspace>
+<plugin id="MQTTNodes" version="10.0.0.9"/>
+<plugin id="com.ibm.etools.mft.connector.loopback" version="10.0.0.9"/>
+<plugin id="com.ibm.etools.mft.connector.salesforce" version="10.0.0.9"/>
+<plugin id="com.ibm.etools.mft.mapping.codegen.esql" version="10.0.0.9"/>
+</pluginspace>

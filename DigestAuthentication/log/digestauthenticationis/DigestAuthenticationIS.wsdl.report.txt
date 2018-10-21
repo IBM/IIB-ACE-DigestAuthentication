@@ -1,0 +1,23 @@
+
+
+Importing file: C:\Users\IBM_ADMIN\Desktop\IBM dev works\DASampleWSDL\DigestAuthenticationIS.wsdl
+
+The WSDL import will proceed with bindings DigestAuthenticationISHttpBinding.
+Creating wsdl schema document for file:///C:/Users/IBM_ADMIN/Desktop/IBM dev works/DASampleWSDL/DigestAuthenticationIS.wsdl.
+Parsing wsdl binding {http://DigestAuthenticationIS}DigestAuthenticationISHttpBinding.
+Parsing wsdl binding input authenticate.
+Parsing wsdl binding output authenticate.
+Processing doc style for operation authenticate.
+Populating WSDL schema DigestAuthenticationIS.xsd.
+Removing unnecessary import statement with namespace  from schema /DigestAuthentication/DigestAuthenticationIS_InlineSchema1.xsd.  This statement was not resolved and is never used.
+Creating file DigestAuthenticationIS.xsd in the workspace.
+Creating file /DigestAuthentication/DigestAuthenticationIS_InlineSchema1.xsd in the workspace.
+Copying source WSDL DigestAuthenticationIS.wsdl to DigestAuthenticationIS.wsdl.
+
+Elapsed time processing this message definition file: 0.258 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+
