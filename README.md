@@ -53,7 +53,48 @@ https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
 Main message flow
 This is the main flow where request is received at Http Input node and once the transaction is complete it responds by the HTTP reply node.
 
-### 2. Deploy service locally and test 
+Below are the brief details on the functionality of each node. These nodes functionality can be replicated by similar tools/nodes available on other development platforms.
 
+`HTTP Input`: This node is the start of a transaction and accepts the request to be processed. In HTTP node property we need to configure the URI which will be exposed as an API.
+
+`SetEndpointAndPayload`: This is a node to store server URLs, user name and password to access digest authentication server. These configurations can be done in different ways on different development tools.
+
+`DigestAuthentication subflow`: This is the component where the core logic is built.   In detail examination will be in the subflow section.
+
+`SetdigestHdrORCookies`: This node is used to set the Authorization in HTTP RequestHeader. For a successful authentication the http request header must have either a valid authorisation header or cookies information.
+
+`Set Payload`: This node simply outputs the response which server has sent after successful authentication.
+
+#### Digest Authentication subflow(resuable)
+![](images/DAsubflow.jpg)
+
+`SetHTTPDestination`: This node override and set the request URL and the request method to be set on HTTP Request node.
+
+`ComputeResponse`: Whenever the first time a request is sent to the digest authentication enabled server, it will fail. The reason for failure is that the request sent to the server is plain http but for successful authentication, it needs to be with an authorisation header or cookies. There are few steps in this node to built core logic
+
+1. `Capturing response data`: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP header . In WWW-Authenticate element of header response there will be information about nounce, relam, qop which will be used to create authorisation header.
+
+![](images/Capturingresponsedata.jpg)
+
+2. Calculating hash: Once the values of required are captured. Following hash values needs to be created using the md5 algorithm.
+
+![](images/CalHash.jpg)
+
+3. Creating a response seed: Response seed is the combination of generated md5 hash and nonce, ncvalue, cnonce, qop. This response seed is again encrypted with the md5 algorithm  to generate the final response seed which will be set in the authorisation header.
+
+![](images/responseSeed.jpg)
+
+4. Creating authorization Header: In this step the all the parameters and their values are set and this header is sent to server for authorisation. 
+
+![](images/authorizationHeader.jpg)
+
+Set Header: This node is used to save the authorisation header in the http request header before sending request to the server for authentication.
+
+Set cookies: After sending the request with authorisation header, the response from the server should be a success. With this success response the server sends the cookie information which can be used to authenticate without calculating the authorisation header every time. One can either store cookies or the authorisation header to successfully authenticate the request next time.
+
+![](images/cookies.jpg)
+
+
+### 2. Deploy service locally and test 
 
 
