@@ -72,19 +72,19 @@ Below are  brief details on the functionality of each node. These functionalitie
 This is the core component which builds the authorization header or cookies. This is a re-usable component for iib tool and can be integrated with different flows in an application. 
 ![](images/DAsubflow.jpg)
 
-`SetHTTPDestination`: This node override and set the request URL and the request method to be set on HTTP Request node.
+`SetHTTPDestination`: This node overrides and set the request URL and the request method to be set on HTTP Request node.
 
-`ComputeResponse`: Whenever the first time a request is sent to the digest authentication enabled server, it will fail. The reason for failure is that the request sent to the server is plain http but for successful authentication, it needs to be with an authorisation header or cookies. There are few steps in this node to built core logic
+`ComputeResponse`: First time when a request is sent to the digest authentication enabled server, it will always fail. The reason for failure is that the request sent to the server is plain http but for successful authentication, it needs to be with an authorization header or cookies. There are few steps in this node to build authorization logic.
 
-1. Capturing response data: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP header . In WWW-Authenticate element of header response there will be information about nounce, relam, qop which will be used to create authorisation header.
+1. Capturing response data: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP response header . In WWW-Authenticate element of header response, there will be information about nounce, relam, qop which will be used to create authorisation header.
 
 ![](images/Capturingresponsedata.jpg)
 
-2. Calculating hash: Once the values of required are captured. Following hash values needs to be created using the md5 algorithm.
+2. Calculating hash: Once the required values are captured. Following hash values needs to be created using the md5 algorithm.
 
 ![](images/CalHash.jpg)
 
-3. Creating a response seed: Response seed is the combination of generated md5 hash and nonce, ncvalue, cnonce, qop. This response seed is again encrypted with the md5 algorithm  to generate the final response seed which will be set in the authorisation header.
+3. Creating a response seed: Response seed is the combination of generated md5 hash, nonce, ncvalue, cnonce and qop. This response seed is again encrypted with the md5 algorithm  to generate the final response seed which will be set in the authorisation header.
 
 ![](images/responseSeed.jpg)
 
@@ -92,9 +92,9 @@ This is the core component which builds the authorization header or cookies. Thi
 
 ![](images/authorizationHeader.jpg)
 
-`Set Header`: This node is used to save the authorisation header in the http request header before sending request to the server for authentication.
+`SetHeader`: This node is used to save the authorisation header in the http request header before sending request to the server for authentication.
 
-`Set cookies`: After sending the request with authorisation header, the response from the server should be a success. With this success response the server sends the cookie information which can be used to authenticate without calculating the authorisation header every time. One can either store cookies or the authorisation header to successfully authenticate the request next time.
+`ComputeCookie`: After sending the request with authorisation header, the response from the server should be a success. With this success response the server sends the cookie information which can be used to authenticate without calculating the authorisation header every time. One can either store cookies or the authorisation header to successfully authenticate the request next time.
 
 ![](images/cookies.jpg)
 
