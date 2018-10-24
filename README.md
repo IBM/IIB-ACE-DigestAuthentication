@@ -101,7 +101,7 @@ This is the core component which builds the authorization header or cookies. Thi
 
 ### 2. Deploy service locally and test 
 
-For demo purpose we will create 2 services. One with authorisation logic and another as a sample client to access the first service. 
+For demo purpose, we will create 2 services. One with authorisation logic and another as a sample client to access the first service. 
 
 `DigestAuthentication`: This service contains the logic of implementing digest authorisation. This service will be exposed on uri /digesthttpapi for external clients to access.
 
@@ -111,7 +111,7 @@ For simplicity, we will package the service and the client service in a single b
 
 ![](images/preparebar.jpg)
 
-Test locally: In the test, we have used a sample api using digest authentication and is available on internet for testing. Below are the details which can also be found in code.
+Test locally: For tests, we have used a sample api using digest authentication and is available on internet for testing. Below are the details which can also be found in code.
 
 ```
 url: http://httpbin.org/digest-auth/auth/user/passwd
@@ -131,7 +131,7 @@ First request: On the first transaction, we can see that the transaction went th
 
 ![](images/firstreq.jpg)
 
-Next request: On the second or the next requests, Flow has skipped the digest authentication subflow an just reused the authorisation header from cache for better performance. Since the external api used is a simple one hence is not secured and authorisation headers or cookies can be reused. For a real environment one need to recall this digest authentication subflow to re-create headers/cookies on rejection.
+Next request: On the second or  next requests, flow has skipped the digest authentication subflow and just reused the authorization header from cache for better performance. Cookies/authorization header can expired depending on security implementation hence one need to recall digest authentication subflow to re-create headers/cookies.
 
 ![](images/nextreq.jpg)
 
