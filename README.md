@@ -52,23 +52,24 @@ https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
 ### 1. Create Service
 #### Main message flow
 
-This is the main flow where request is received at Http Input node and once the transaction is complete it responds by the HTTP reply node.
+This is the main flow where request is received at Http Input node and once the transaction is complete it responds by the HTTP reply node. All the steps shown in the below image are executed since user submits request till it receives a response i.e. all the logic is implemented in a single transaction.
 
 ![](images/mainflow.jpg)
 
-Below are the brief details on the functionality of each node. These nodes functionality can be replicated by similar tools/nodes available on other development platforms.
+Below are  brief details on the functionality of each node. These functionalities can be replicated by similar tools/nodes available on other development platforms.
 
 `HTTP Input`: This node is the start of a transaction and accepts the request to be processed. In HTTP node property we need to configure the URI which will be exposed as an API.
 
 `SetEndpointAndPayload`: This is a node to store server URLs, user name and password to access digest authentication server. These configurations can be done in different ways on different development tools.
 
-`DigestAuthentication subflow`: This is the component where the core logic is built.   In detail examination will be in the subflow section.
+`DigestAuthentication subflow`: This is the component where the core logic is built. Details of its implementation will be in the next section.
 
-`SetdigestHdrORCookies`: This node is used to set the Authorization in HTTP RequestHeader. For a successful authentication the http request header must have either a valid authorisation header or cookies information.
+`SetdigestHdrORCookies`: This node is used to set authorization in HTTP request header. For a successful authentication, the http request header must have either a valid authorisation header or cookies information.
 
 `Set Payload`: This node simply outputs the response which server has sent after successful authentication.
 
-#### Digest Authentication subflow(resuable)
+#### Digest Authentication subflow
+This is the core component which builds the authorization header or cookies. This is a re-usable component for iib tool and can be integrated with different flows in an application. 
 ![](images/DAsubflow.jpg)
 
 `SetHTTPDestination`: This node override and set the request URL and the request method to be set on HTTP Request node.
