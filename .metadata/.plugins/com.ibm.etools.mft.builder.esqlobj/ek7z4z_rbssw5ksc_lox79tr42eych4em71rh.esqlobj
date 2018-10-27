@@ -1,0 +1,7 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		    
+    	SET InputLocalEnvironment.Destination.HTTP.RequestURL =	 Environment.Variables.EndPointUrl;
+        SET InputLocalEnvironment.Destination.HTTP.RequestLine.Method = 'GET';
+		RETURN TRUE;
+	END;

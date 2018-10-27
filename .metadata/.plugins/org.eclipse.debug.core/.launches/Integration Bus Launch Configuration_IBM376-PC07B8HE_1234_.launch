@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><launchConfiguration type="com.ibm.etools.mft.debug.internal.mbLaunchConfigurationDelegate">
+<stringAttribute key="BRName" value="LocalBroker"/>
+<stringAttribute key="ConnectionInfo" value=""/>
+<stringAttribute key="EGName" value="defaultEG"/>
+<stringAttribute key="com.ibm.etools.mft.debug.attr_hostname" value="IBM376-PC07B8HE"/>
+<stringAttribute key="com.ibm.etools.mft.debug.attr_javaportname" value="1234"/>
+</launchConfiguration>

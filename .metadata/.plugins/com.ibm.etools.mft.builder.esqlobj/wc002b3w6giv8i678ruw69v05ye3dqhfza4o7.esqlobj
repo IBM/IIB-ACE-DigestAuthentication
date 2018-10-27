@@ -1,0 +1,24 @@
+CREATE COMPUTE MODULE DigestAuthentication_SetDigestHdr
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+
+
+	     
+	     SET OutputRoot.HTTPRequestHeader."Connection" = 'keep-alive';
+	 	 SET OutputRoot.HTTPRequestHeader."Content-Type" = 'application/xml';
+	    -- IF NOT(Environment.Variables.Cookies='NoCookies') THEN
+		-- SET OutputRoot.HTTPRequestHeader."Cookie" =  Environment.Variables.Cookies;
+		-- ELSE
+		IF AuthHeaderCache IS NULL THEN --Check if Shared variable already have some value.
+          SET OutputRoot.HTTPRequestHeader."Authorization" = Environment.Variables.AuthorizationHeader;
+          SET AuthHeaderCache = OutputRoot.HTTPRequestHeader."Authorization"; 
+        ELSE 
+          SET OutputRoot.HTTPRequestHeader."Authorization" = AuthHeaderCache; 
+         END IF;
+     	 SET InputLocalEnvironment.Destination.HTTP.RequestURL =	 Environment.Variables.EndPointUrl;
+         SET InputLocalEnvironment.Destination.HTTP.RequestLine.Method = 'GET';
+		 
+		RETURN TRUE;
+	END;
+
+END MODULE;
