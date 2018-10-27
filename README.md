@@ -19,7 +19,7 @@ When the reader has completed this code pattern, they will understand how to:
 6. Request is successfully authorised. 
 7. Application saves authorisation header or cookies in cache for next http request and respond with success.
 8. User sends next request to IIB application on cloud.
-9. Application synchronise request and cache data before seeking server authorisation.
+9. Application synchronise request and cache before seeking server authorisation.
 10. Request sent to server, server authorises user and success response sent back to user.
 
 
