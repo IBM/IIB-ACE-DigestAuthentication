@@ -1,27 +1,27 @@
-# Digest Authentication with IBM Integration Bus/App Connect
+# Digest Authentication with IIB/App Connect
 
 In this Code Pattern, we will learn how to build a service in IBM integration bus which can be exposed as a proxy to achieve digest authentication. We will learn how the digest authentication mechanism works in background and what logic needs to be built for a platform which doesn’t support digest authentication of its own. We will also learn how to expose the IIB service on a IBM cloud Kubernetes cluster and consume it via a sample client. Entire façade application and client application is built on IBM integration bus and deployed on Kubernetes node using a Docker image. 
 
 When the reader has completed this code pattern, they will understand how to:
-* Create a message flow and build logic for digest Authentication
-* Deploy and test application locally 
-* Deploy and test application expose the IIB service to Kubernetes
+* Create a message flow and build logic for digest Authentication.
+* Deploy and test application locally.
+* Deploy and test application expose the IIB service to Kubernetes.
 
 ## Flow Diagram
 ![](images/flow.jpg)
 
 ## Flow
-1. User sends request to application. 
+1. User sends request to IIB application on cloud. 
 2. Application sends request to server seeking authorisation.
 3. Request is rejected by the server asking for an authorisation and server responds with the details to create authorisation.
 4. Application builds authorisation logic.
 5. Application sends another request to server seeking authorisation. 
 6. Request is successfully authorised. 
 7. Application saves authorisation header or cookies in cache for next http request and respond with success.
-8. User sends request to application.
+8. User sends next request to IIB application on cloud.
 9. Application sends request with cached data to server seeking authorisation.
-10. Server authorises users.    
-11. Success response sent back to user
+10. Server authorises user.    
+11. Success response sent back to user.
 
 ## Included components
 * [IBM Cloud](https://www.ibm.com/cloud/): IBM Cloud is a suite of cloud computing services from IBM that offers both platform as a service (PaaS) and infrastructure as a service (IaaS). With IBM Cloud IaaS, organizations can deploy and access virtualized IT resources.
@@ -38,7 +38,7 @@ When the reader has completed this code pattern, they will understand how to:
 To-be-included
 
 ## Prerequisites:
-* Access to IBM cloud tools: To interact with IBM cloud, the IBM Cloud CLI will need to be installed beforehand. Please follow steps in below link to setup your IBM cloud tools.
+* Access to IBM cloud tools: To interact with IBM cloud, IBM Cloud CLI will need to be installed beforehand. Please follow steps in below link to setup your IBM cloud tools.
 https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
 
 * IBM Integration Bus toolkit: In this code pattern we will use IIB toolkit version 10.0.0.9 to demo the logic and implementation. This logic can be implemented by any development tool available to you. 
@@ -46,43 +46,45 @@ https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
 # Steps
 1.	[Create Service](#1-create-service)
 2.	[Deploy service locally and test](#2-deploy-service-locally-and-test) 
-3.	[Create Kubernetes cluster and deploy on IBM cloud](#3-create-kubernetes-cluster-and-deploy-on-IBM-cloud)
+3.	[Create cluster and deploy on IBM cloud](#3-create-cluster-and-deploy-on-ibm-cloud)
 4.	[Test API on Cloud](#4-test-api-on-cloud)
 
 ### 1. Create Service
-Main message flow
-This is the main flow where request is received at Http Input node and once the transaction is complete it responds by the HTTP reply node.
+#### Main message flow
+
+This is the main flow where request is received at Http Input node and once the transaction is complete it responds by the HTTP reply node. All the steps shown in the below image are executed since user submits request till it receives a response i.e. all the logic is implemented in a single transaction.
 
 ![](images/mainflow.jpg)
 
-Below are the brief details on the functionality of each node. These nodes functionality can be replicated by similar tools/nodes available on other development platforms.
+Below are  brief details on the functionality of each node. These functionalities can be replicated by similar tools/nodes available on other development platforms.
 
 `HTTP Input`: This node is the start of a transaction and accepts the request to be processed. In HTTP node property we need to configure the URI which will be exposed as an API.
 
 `SetEndpointAndPayload`: This is a node to store server URLs, user name and password to access digest authentication server. These configurations can be done in different ways on different development tools.
 
-`DigestAuthentication subflow`: This is the component where the core logic is built.   In detail examination will be in the subflow section.
+`DigestAuthentication subflow`: This is the component where the core logic is built. Details of its implementation will be in the next section.
 
-`SetdigestHdrORCookies`: This node is used to set the Authorization in HTTP RequestHeader. For a successful authentication the http request header must have either a valid authorisation header or cookies information.
+`SetdigestHdrORCookies`: This node is used to set authorization in HTTP request header. For a successful authentication, the http request header must have either a valid authorisation header or cookies information.
 
 `Set Payload`: This node simply outputs the response which server has sent after successful authentication.
 
-#### Digest Authentication subflow(resuable)
+#### Digest Authentication subflow
+This is the core component which builds the authorization header or cookies. This is a re-usable component for iib tool and can be integrated with different flows in an application. 
 ![](images/DAsubflow.jpg)
 
-`SetHTTPDestination`: This node override and set the request URL and the request method to be set on HTTP Request node.
+`SetHTTPDestination`: This node overrides and set the request URL and the request method to be set on HTTP Request node.
 
-`ComputeResponse`: Whenever the first time a request is sent to the digest authentication enabled server, it will fail. The reason for failure is that the request sent to the server is plain http but for successful authentication, it needs to be with an authorisation header or cookies. There are few steps in this node to built core logic
+`ComputeResponse`: First time when a request is sent to the digest authentication enabled server, it will always fail. The reason for failure is that the request sent to the server is plain http but for successful authentication, it needs to be with an authorization header or cookies. There are few steps in this node to build authorization logic.
 
-1. Capturing response data: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP header . In WWW-Authenticate element of header response there will be information about nounce, relam, qop which will be used to create authorisation header.
+1. Capturing response data: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP response header . In WWW-Authenticate element of header response, there will be information about nounce, relam, qop which will be used to create authorisation header.
 
 ![](images/Capturingresponsedata.jpg)
 
-2. Calculating hash: Once the values of required are captured. Following hash values needs to be created using the md5 algorithm.
+2. Calculating hash: Once the required values are captured. Following hash values needs to be created using the md5 algorithm.
 
 ![](images/CalHash.jpg)
 
-3. Creating a response seed: Response seed is the combination of generated md5 hash and nonce, ncvalue, cnonce, qop. This response seed is again encrypted with the md5 algorithm  to generate the final response seed which will be set in the authorisation header.
+3. Creating a response seed: Response seed is the combination of generated md5 hash, nonce, ncvalue, cnonce and qop. This response seed is again encrypted with the md5 algorithm  to generate the final response seed which will be set in the authorisation header.
 
 ![](images/responseSeed.jpg)
 
@@ -90,16 +92,16 @@ Below are the brief details on the functionality of each node. These nodes funct
 
 ![](images/authorizationHeader.jpg)
 
-`Set Header`: This node is used to save the authorisation header in the http request header before sending request to the server for authentication.
+`SetHeader`: This node is used to save the authorisation header in the http request header before sending request to the server for authentication.
 
-`Set cookies`: After sending the request with authorisation header, the response from the server should be a success. With this success response the server sends the cookie information which can be used to authenticate without calculating the authorisation header every time. One can either store cookies or the authorisation header to successfully authenticate the request next time.
+`ComputeCookie`: After sending the request with authorisation header, the response from the server should be a success. With this success response the server sends the cookie information which can be used to authenticate without calculating the authorisation header every time. One can either store cookies or the authorisation header to successfully authenticate the request next time.
 
 ![](images/cookies.jpg)
 
 
 ### 2. Deploy service locally and test 
 
-For demo purpose we will create 2 services. One with authorisation logic and another as a sample client to access the first service. 
+For demo purpose, we will create 2 services. One with authorisation logic and another as a sample client to access the first service. 
 
 `DigestAuthentication`: This service contains the logic of implementing digest authorisation. This service will be exposed on uri /digesthttpapi for external clients to access.
 
@@ -109,7 +111,7 @@ For simplicity, we will package the service and the client service in a single b
 
 ![](images/preparebar.jpg)
 
-Test locally: In the test, we have used a sample api using digest authentication and is available on internet for testing. Below are the details which can also be found in code.
+Test locally: For tests, we have used a sample api using digest authentication and is available on internet for testing. Below are the details which can also be found in code.
 
 ```
 url: http://httpbin.org/digest-auth/auth/user/passwd
@@ -129,12 +131,13 @@ First request: On the first transaction, we can see that the transaction went th
 
 ![](images/firstreq.jpg)
 
-Next request: On the second or the next requests, Flow has skipped the digest authentication subflow an just reused the authorisation header from cache for better performance. Since the external api used is a simple one hence is not secured and authorisation headers or cookies can be reused. For a real environment one need to recall this digest authentication subflow to re-create headers/cookies on rejection.
+Next request: On the second or  next requests, flow has skipped the digest authentication subflow and just reused the authorization header from cache for better performance. Cookies/authorization header can expired depending on security implementation hence one need to recall digest authentication subflow to re-create headers/cookies.
 
 ![](images/nextreq.jpg)
 
 
 ### 3. Create cluster and deploy on IBM cloud
+
 Steps:
 
 1. Login to your IBM cloud account: https://www.ibm.com/cloud/
@@ -172,8 +175,9 @@ Now one can see the information on kubernetes dashborad as below
 
 6. To access your IIB webadmin we will be public ip. Please run below command to get the info.
 
-`bx cs workers mycluster
-`
+```
+bx cs workers mycluster
+```
 7. Under services link you can check port on which the IIB webadmin and http port are mapped.
 
 ![](images/kuServices.jpg)
