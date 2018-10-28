@@ -19,9 +19,9 @@ When the reader has completed this code pattern, they will understand how to:
 6. Request is successfully authorised. 
 7. Application saves authorisation header or cookies in cache for next http request and respond with success.
 8. User sends next request to IIB application on cloud.
-9. Application sends request with cached data to server seeking authorisation.
-10. Server authorises user.    
-11. Success response sent back to user.
+9. Application synchronise request and cache before seeking server authorisation.
+10. Request sent to server, server authorises user and success response sent back to user.
+
 
 ## Included components
 * [IBM Cloud](https://www.ibm.com/cloud/): IBM Cloud is a suite of cloud computing services from IBM that offers both platform as a service (PaaS) and infrastructure as a service (IaaS). With IBM Cloud IaaS, organizations can deploy and access virtualized IT resources.
