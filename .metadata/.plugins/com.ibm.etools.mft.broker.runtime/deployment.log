@@ -112,3 +112,15 @@ DigestAuthentication>>LocalBroker>>defaultEG>>0>>1540569841836
 2871<<Administration Result<<2018-10-26 17:04:06.726 BST<<IBM376-PC07B8HE\gb116216<<deploy<<C:/RohitProjects/IIB-ACE-DigestAuthentication/GeneratedBarFiles/DigestAuthenticationproject.generated.bar<<BAR<<defaultEG<<ExecutionGroup<<COMPLETE
 DigestAuthentication>>LocalBroker>>defaultEG>>0>>1540569922703
 2871<<Administration Result<<2018-10-26 17:05:24.452 BST<<IBM376-PC07B8HE\gb116216<<deploy<<C:/RohitProjects/IIB-ACE-DigestAuthentication/TestModeBarFiles/DigestAuthenticationproject.TestMode.bar<<BAR<<defaultEG<<ExecutionGroup<<COMPLETE
+DigestAuthenticationDemo.bar>>LocalBroker>>defaultEG>>0>>1540638297321
+2871<<Administration Result<<2018-10-27 12:04:59.377 BST<<IBM376-PC07B8HE\gb116216<<deploy<<C:/RohitProjects/IIB-ACE-DigestAuthentication/BARfiles/DigestAuthenticationDemo.bar<<BAR<<defaultEG<<ExecutionGroup<<COMPLETE
+MyHttpClientApi.bar>>LocalBroker>>defaultEG>>0>>1540638299508
+2871<<Administration Result<<2018-10-27 12:04:59.694 BST<<IBM376-PC07B8HE\gb116216<<deploy<<C:/RohitProjects/IIB-ACE-DigestAuthentication/BARfiles/MyHttpClientApi.bar<<BAR<<defaultEG<<ExecutionGroup<<COMPLETE
+MyHttpClientApi.bar>>LocalBroker>>defaultEG>>0>>1540638417305
+2871<<Administration Result<<2018-10-27 12:07:00.055 BST<<IBM376-PC07B8HE\gb116216<<deploy<<C:/RohitProjects/IIB-ACE-DigestAuthentication/BARfiles/MyHttpClientApi.bar<<BAR<<defaultEG<<ExecutionGroup<<COMPLETE
+MyHttpClientApi.bar>>LocalBroker>>defaultEG>>0>>1540638519785
+2871<<Administration Result<<2018-10-27 12:08:41.868 BST<<IBM376-PC07B8HE\gb116216<<deploy<<C:/RohitProjects/IIB-ACE-DigestAuthentication/BARfiles/MyHttpClientApi.bar<<BAR<<defaultEG<<ExecutionGroup<<COMPLETE
+DigestAuthenticationDemo.bar>>LocalBroker>>defaultEG>>0>>1540728694118
+2871<<Administration Result<<2018-10-28 12:11:36.612 GMT<<IBM376-PC07B8HE\gb116216<<deploy<<C:/RohitProjects/IIB-ACE-DigestAuthentication/BARfiles/DigestAuthenticationDemo.bar<<BAR<<defaultEG<<ExecutionGroup<<COMPLETE
+MyHttpClientApi.bar>>LocalBroker>>defaultEG>>0>>1540728696655
+2871<<Administration Result<<2018-10-28 12:11:37.000 GMT<<IBM376-PC07B8HE\gb116216<<deploy<<C:/RohitProjects/IIB-ACE-DigestAuthentication/BARfiles/MyHttpClientApi.bar<<BAR<<defaultEG<<ExecutionGroup<<COMPLETE
