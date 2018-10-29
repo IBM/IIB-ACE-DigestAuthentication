@@ -78,7 +78,7 @@ This is the core component which builds the authorization header or cookies. Thi
 
 1. Capturing response data: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP response header . In WWW-Authenticate element of header response, there will be information about nounce, relam, qop which will be used to create authorisation header.
 
-![](images/Capturingresponsedata.png)
+![](images/Capturingresponsedata.jpg)
 
 2. Calculating hash: Once the required values are captured. Following hash values needs to be created using the md5 algorithm.
 
@@ -90,7 +90,7 @@ This is the core component which builds the authorization header or cookies. Thi
 
 4. Creating authorization Header: In this step the all the parameters and their values are set and this header is sent to server for authorisation. 
 
-![](images/authorizationHeader.png)
+![](images/authorizationHeader.jpg)
 
 `SetHeader`: This node is used to save the authorisation header in the http request header before sending request to the server for authentication.
 
