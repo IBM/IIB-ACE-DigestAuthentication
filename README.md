@@ -188,11 +188,11 @@ bx cs workers mycluster
 
 1. Create a sample API on App Connect on IBM cloud.  In below screenshot, you can see that we have used the /digesthttpapi url which we deployed on the IBM cloud.
 
-![](images/AppConnectflow.jpg)
+![](images/AppConnectflow.png)
 
 2. Test the client application using browser interface provided in App Connect and it should produce below result.
 
-![](images/CloudTestAppConnect.jpg)
+![](images/CloudTestAppConnect.png)
 
 3. Test the client application using  SOAP UI. It should produce same result as above. Please ensure you add  X-IBM-Client-Id value in the header.
 
