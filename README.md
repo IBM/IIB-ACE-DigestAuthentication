@@ -146,11 +146,9 @@ Steps:
 
 ![](images/clusters.jpg)
 
-3. Create private repository: It takes some time for cluster to be created hence in the meantime please create your private repository. This private repository is a replica of the IBM public repository with docker image of IBM Integration Bus.
+3. Create private repository: It takes some time for cluster to be created hence in the meantime please create your private repository. This private repository is a replica of the IBM public image avaiable on docker hub.
 
 ![](images/privateRepo.jpg)
-
-![](images/publicRepo.jpg)
 
 4. Once the cluster is in normal state then issue below commands to access your cluster
 
@@ -186,9 +184,17 @@ bx cs workers mycluster
 
 ![](images/IIB10NodeCloud.jpg)
 
-### 4. Test API on Cloud
+### 4. Test API on Cloud(Watch the video)
 
-Test the client application using IBM cloud public IP and port. It should produce same result as local tests.
+1. Create a sample API on App Connect on IBM cloud.  In below screenshot, you can see that we have used the /digesthttpapi url which we deployed on the IBM cloud.
+
+![](images/AppConnectflow.jpg)
+
+2. Test the client application using browser interface provided in App Connect and it should produce below result.
+
+![](images/CloudTestAppConnect.jpg)
+
+3. Test the client application using  SOAP UI. It should produce same result as above. Please encure you add  X-IBM-Client-Id value in the header.
 
 ![](images/CloudTest.jpg)
 
