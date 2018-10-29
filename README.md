@@ -163,9 +163,9 @@ kubectl get nodes
 5. Once the above commands as executed successfully then we need to deploy our IIB image on the kubernetes cluster and expose the webadmin and http port. This can be done with below commands
 
 ```
-kubectl run ku-iib --image=registry.eu-gb.bluemix.net/rriibns/rriibrepo --env="LICENSE=accept" --env="NODENAME=IB10NODE"
-kubectl expose deployment/ku-iib --type=NodePort --port=4414 --target-port=4414 --name=ib10node-svc-4414
-kubectl expose deployment/ku-iib --type=NodePort --port=7800 --target-port=7800 --name=ib10node-http-7800
+kubectl run ku-iib --image=registry.eu-gb.bluemix.net/iib10-ns/iib10repo:iib10latest --env="LICENSE=accept" --env="NODENAME=IIB10NODE"
+kubectl expose deployment/ku-iib --type=NodePort --port=4414 --target-port=4414 --name=iib10node-svc-4414
+kubectl expose deployment/ku-iib --type=NodePort --port=7800 --target-port=7800 --name=iib10node-http-7800
 ```
 Now one can see the information on kubernetes dashborad as below
 
@@ -194,7 +194,7 @@ bx cs workers mycluster
 
 ![](images/CloudTestAppConnect.jpg)
 
-3. Test the client application using  SOAP UI. It should produce same result as above. Please encure you add  X-IBM-Client-Id value in the header.
+3. Test the client application using  SOAP UI. It should produce same result as above. Please ensure you add  X-IBM-Client-Id value in the header.
 
 ![](images/CloudTest.jpg)
 
