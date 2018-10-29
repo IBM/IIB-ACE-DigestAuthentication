@@ -8,7 +8,7 @@ When the reader has completed this code pattern, they will understand how to:
 * Deploy and test application expose the IIB service to Kubernetes.
 
 ## Flow Diagram
-![](images/flow.png)
+![](images/flow.jpg)
 
 ## Flow
 1. User sends request to IIB application on cloud. 
@@ -54,7 +54,7 @@ https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
 
 This is the main flow where request is received at Http Input node and once the transaction is complete it responds by the HTTP reply node. All the steps shown in the below image are executed since user submits request till it receives a response i.e. all the logic is implemented in a single transaction.
 
-![](images/mainflow.png)
+![](images/mainflow.jpg)
 
 Below are  brief details on the functionality of each node. These functionalities can be replicated by similar tools/nodes available on other development platforms.
 
@@ -70,7 +70,7 @@ Below are  brief details on the functionality of each node. These functionalitie
 
 #### Digest Authentication subflow
 This is the core component which builds the authorization header or cookies. This is a re-usable component for iib tool and can be integrated with different flows in an application. 
-![](images/DAsubflow.png)
+![](images/DAsubflow.jpg)
 
 `SetHTTPDestination`: This node overrides and set the request URL and the request method to be set on HTTP Request node.
 
@@ -82,11 +82,11 @@ This is the core component which builds the authorization header or cookies. Thi
 
 2. Calculating hash: Once the required values are captured. Following hash values needs to be created using the md5 algorithm.
 
-![](images/CalHash.png)
+![](images/CalHash.jpg)
 
 3. Creating a response seed: Response seed is the combination of generated md5 hash, nonce, ncvalue, cnonce and qop. This response seed is again encrypted with the md5 algorithm  to generate the final response seed which will be set in the authorisation header.
 
-![](images/responseSeed.png)
+![](images/responseSeed.jpg)
 
 4. Creating authorization Header: In this step the all the parameters and their values are set and this header is sent to server for authorisation. 
 
@@ -96,7 +96,7 @@ This is the core component which builds the authorization header or cookies. Thi
 
 `ComputeCookie`: After sending the request with authorisation header, the response from the server should be a success. With this success response the server sends the cookie information which can be used to authenticate without calculating the authorisation header every time. One can either store cookies or the authorisation header to successfully authenticate the request next time.
 
-![](images/cookies.png)
+![](images/cookies.jpg)
 
 
 ### 2. Deploy service locally and test 
@@ -107,9 +107,9 @@ For demo purpose, we will create 2 services. One with authorisation logic and an
 
 `MyHttpApiClient`: This service is a simple client without any logic and it will be consuming the first service. This client service will be exposed on the uri /myhttpapiclient
 
-For simplicity, we will package the service and the client service in a single bar named `DigestAuthenticationDemo.bar`.
+For simplicity, one can package the service and the client service in a single bar or in mutiple bar files. DigestAuthentication applaication is packaged in `DigestAuthenticationDemo.bar`.
 
-![](images/preparebar.png)
+![](images/preparebar.jpg)
 
 Test locally: For tests, we have used a sample api using digest authentication and is available on internet for testing. Below are the details which can also be found in code.
 
@@ -123,17 +123,17 @@ Password: passwd
 
 Below is the result on testing on local environment.
 
-![](images/testlocal.png)
+![](images/testlocal.jpg)
 
 IBM integration bus provide a very useful functionality called flow exerciser which captures the path which the transaction as taken for each request. 
 
 First request: On the first transaction, we can see that the transaction went through digest authentication subflow to do all the logic for authentication.
 
-![](images/firstreq.png)
+![](images/firstreq.jpg)
 
 Next request: On the second or  next requests, flow has skipped the digest authentication subflow and just reused the authorization header from cache for better performance. Cookies/authorization header can expired depending on security implementation hence one need to recall digest authentication subflow to re-create headers/cookies.
 
-![](images/nextreq.png)
+![](images/nextreq.jpg)
 
 
 ### 3. Create cluster and deploy on IBM cloud
@@ -144,11 +144,19 @@ Steps:
 
 2. Create cluster: Under containers section, go to clusters and click on create cluster.
 
-![](images/clusters.png)
+![](images/clusters.jpg)
 
-3. Create private repository: It takes some time for cluster to be created hence in the meantime please create your private repository. This private repository is a replica of the IBM public image avaiable on docker hub.
+3. Create private repository: It takes some time for cluster to be created hence in the meantime please create your private repository. This private repository image is a replica of public image of IBM integration bus available on docker hub.
 
-![](images/privateRepo.png)
+```
+ibmcloud login --sso -a https://api.eu-gb.bluemix.net
+docker pull ibmcom/iib
+ibmcloud cr namespace-add iib10-ns
+docker tag ibmcom/iib registry.eu-gb.bluemix.net/iib10-ns/iib10repo:iib10latest
+docker push registry.eu-gb.bluemix.net/iib10-ns/iib10repo:iib10latest
+```
+
+![](images/privateRepo.jpg)
 
 4. Once the cluster is in normal state then issue below commands to access your cluster
 
@@ -169,7 +177,7 @@ kubectl expose deployment/ku-iib --type=NodePort --port=7800 --target-port=7800 
 ```
 Now one can see the information on kubernetes dashborad as below
 
-![](images/kuDashboard.png)
+![](images/kuDashboard.jpg)
 
 6. To access your IIB webadmin we will be public ip. Please run below command to get the info.
 
@@ -178,24 +186,24 @@ bx cs workers mycluster
 ```
 7. Under services link you can check port on which the IIB webadmin and http port are mapped.
 
-![](images/kuServices.png)
+![](images/kuServices.jpg)
 
 8. Deploy the bar on IBM cloud : Access the IIB web admin on from the IP and port from above steps and then deploy the DigestAuthenticationDemo.bar
 
-![](images/IIB10NodeCloud.png)
+![](images/IIB10NodeCloud.jpg)
 
 ### 4. Test API on Cloud(Watch the video)
 
 1. Create a sample API on App Connect on IBM cloud.  In below screenshot, you can see that we have used the /digesthttpapi url which we deployed on the IBM cloud.
 
-![](images/AppConnectflow.png)
+![](images/AppConnectflow.jpg)
 
 2. Test the client application using browser interface provided in App Connect and it should produce below result.
 
-![](images/CloudTestAppConnect.png)
+![](images/CloudTestAppConnect.jpg)
 
 3. Test the client application using  SOAP UI. It should produce same result as above. Please ensure you add  X-IBM-Client-Id value in the header.
 
-![](images/CloudTest.png)
+![](images/CloudTest.jpg)
 
 
