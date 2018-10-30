@@ -103,7 +103,7 @@ For demo purpose, we will create 2 services. One with authorisation logic and an
 
 `MyHttpApiClient`: This service is a simple client without any logic and it will be consuming the first service. This client service will be exposed on the uri /myhttpapiclient
 
-For simplicity, one can package the service and the client service in a single bar or in mutiple bar files. DigestAuthentication applaication is packaged in `DigestAuthenticationDemo.bar`.
+For simplicity, one can package the service and the client service in a single bar or in multiple bar files. DigestAuthentication is packaged in `DigestAuthenticationDemo.bar`.
 
 ![](images/preparebar.jpg)
 
