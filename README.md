@@ -188,9 +188,9 @@ bx cs workers mycluster
 
 ![](images/IIB10NodeCloud.jpg)
 
-### 4. Test API on Cloud(Watch the video)
+### 4. Test API on Cloud
 
-1. Create a sample API on App Connect on IBM cloud.  In below screenshot, you can see that we have used the /digesthttpapi url which we deployed on the IBM cloud.
+1. Create a sample API on App Connect on IBM cloud.  In below screenshot, you can see that we have used the /digesthttpapi url which we deployed on the IBM cloud. Please watch the video for details.
 
 ![](images/AppConnectflow.jpg)
 
