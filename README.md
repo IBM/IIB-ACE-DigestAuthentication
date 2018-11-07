@@ -76,7 +76,7 @@ This is the core component which builds the authorization header or cookies. Thi
 
 `ComputeResponse`: First time when a request is sent to the digest authentication enabled server, it will always fail. The reason for failure is that the request sent to the server is plain http but for successful authentication, it needs to be with an authorization header or cookies. There are few steps in this node to build authorization logic.
 
-1. Capturing response data: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP response header . In WWW-Authenticate element of header response, there will be information about nounce, relam, qop which will be used to create authorisation header.
+1. Capturing response data: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP response header. In WWW-Authenticate element of header response, there will be information about nounce, relam, qop which will be used to create authorisation header.
 
 ![](images/Capturingresponsedata.jpg)
 
@@ -175,7 +175,7 @@ kubectl run ku-iib --image=registry.eu-gb.bluemix.net/iib10-ns/iib10repo:iib10la
 kubectl expose deployment/ku-iib --type=NodePort --port=4414 --target-port=4414 --name=iib10node-svc-4414
 kubectl expose deployment/ku-iib --type=NodePort --port=7800 --target-port=7800 --name=iib10node-http-7800
 ```
-Now one can see the information on kubernetes dashborad as below
+Now one can see the information on kubernetes dashboard as below
 
 ![](images/kuDashboard.jpg)
 
@@ -188,7 +188,7 @@ bx cs workers mycluster
 
 ![](images/kuServices.jpg)
 
-8. Deploy the bar on IBM cloud : Access the IIB web admin on from the IP and port from above steps and then deploy the DigestAuthenticationDemo.bar
+8. Deploy the bar on IBM cloud: Access the IIB web admin on from the IP and port from above steps and then deploy the DigestAuthenticationDemo.bar
 
 ![](images/IIB10NodeCloud.jpg)
 
