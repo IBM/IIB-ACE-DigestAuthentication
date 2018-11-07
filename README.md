@@ -33,6 +33,10 @@ When the reader has completed this code pattern, they will understand how to:
 * [IBM Integration bus](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm): IIB allows business information to flow between disparate applications across multiple hardware and software platforms. Rules can be applied to the data flowing through the message broker to route and transform the information IIB provides access to various inbuilt nodes which provide ready to use capability.
 * [Digest Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication): Digest access authentication is one of the agreed-upon methods a web server can use to negotiate credentials, such as username or password, with a user's web browser. This can be used to confirm the identity of a user before sending sensitive information, such as online banking transaction history.
 
+# Watch the Video
+
+[![](http://img.youtube.com/vi/pbvq--FGLrs/0.jpg)](https://www.youtube.com/watch?v=pbvq--FGLrs)
+
 ## Prerequisites:
 * Access to IBM cloud tools: To interact with IBM cloud, IBM Cloud CLI will need to be installed beforehand. Please follow steps in below link to setup your IBM cloud tools.
 https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
