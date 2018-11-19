@@ -1,6 +1,4 @@
-
-CREATE COMPUTE MODULE DigestAuthentication_SetDigestHdr
-	CREATE FUNCTION Main() RETURNS BOOLEAN
+/*EATE FUNCTION Main() RETURNS BOOLE*/
 	BEGIN
 
 
@@ -23,4 +21,3 @@ CREATE COMPUTE MODULE DigestAuthentication_SetDigestHdr
 		RETURN TRUE;
 	END;
 
-END MODULE;

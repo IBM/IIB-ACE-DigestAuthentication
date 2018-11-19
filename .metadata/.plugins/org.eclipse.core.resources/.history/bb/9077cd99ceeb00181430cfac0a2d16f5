@@ -7,7 +7,6 @@ CREATE COMPUTE MODULE DigestAuthentication_SetDigestHdr
 	     
 	     SET OutputRoot.HTTPRequestHeader."Connection" = 'keep-alive';
 	 	 SET OutputRoot.HTTPRequestHeader."Content-Type" = 'application/xml';
-	 	-- Cookies or Authorization can be used for successful authorization
 	    -- IF NOT(Environment.Variables.Cookies='NoCookies') THEN
 		-- SET OutputRoot.HTTPRequestHeader."Cookie" =  Environment.Variables.Cookies;
 		-- ELSE
