@@ -76,7 +76,7 @@ This is the core component which builds the authorization header or cookies. Thi
 
 `ComputeResponse`: First time when a request is sent to the digest authentication enabled server, it will always fail. The reason for failure is that the request sent to the server is plain http but for successful authentication, it needs to be with an authorization header or cookies. There are few steps in this node to build authorization logic.
 
-1. Capturing response data: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP response header . In WWW-Authenticate element of header response, there will be information about nounce, relam, qop which will be used to create authorisation header.
+1. Capturing response data: When server rejects access, it sends back the information to the client asking for authorisation header along with its server information in HTTP response header . In WWW-Authenticate element of header response, there will be information about nonce, realm, qop which will be used to create authorisation header.
 
 ![](images/Capturingresponsedata.jpg)
 
