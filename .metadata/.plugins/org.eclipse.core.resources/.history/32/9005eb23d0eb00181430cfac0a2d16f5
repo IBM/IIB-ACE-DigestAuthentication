@@ -19,10 +19,6 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
-    <stickyBoard>
-      <stickyNote location="385,241" association="FCMComposite_1_2">
-        <body xmi:type="utility:ConstantString" string="Use the localhost or cloud url to&#xA;access the digest authentication api"/>
-      </stickyNote>
-    </stickyBoard>
+    <stickyBoard/>
   </eClassifiers>
 </ecore:EPackage>
