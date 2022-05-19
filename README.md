@@ -1,6 +1,6 @@
 # Digest Authentication with IIB/App Connect
 
-In this Code Pattern, we will learn how to build a service in IBM integration bus which can be exposed as a proxy to achieve digest authentication. We will learn how the digest authentication mechanism works in background and what logic needs to be built for a platform which doesn’t support digest authentication of its own. We will also learn how to expose the IIB service on a IBM cloud Kubernetes cluster and consume it via a sample client. Entire façade application and client application is built on IBM integration bus and deployed on Kubernetes node using a Docker image. 
+In this Code Pattern, we will learn how to build a service in IBM integration bus which can be exposed as a proxy to achieve digest authentication. We will learn how the digest authentication mechanism works in background and what logic needs to be built for a platform which doesn’t support digest authentication of its own. We will also learn how to expose the IIB service on a IBM cloud Kubernetes cluster and consume it via a sample client. Entire façade application and client application is built on IBM integration bus and deployed on Kubernetes node using a Docker image.
 
 When the reader has completed this code pattern, they will understand how to:
 * Create a message flow and build logic for digest Authentication.
@@ -11,12 +11,12 @@ When the reader has completed this code pattern, they will understand how to:
 ![](images/flow.jpg)
 
 ## Flow
-1. User sends request to IIB application on cloud. 
+1. User sends request to IIB application on cloud.
 2. Application sends request to server seeking authorisation.
 3. Request is rejected by the server asking for an authorisation and server responds with the details to create authorisation.
 4. Application builds authorisation logic.
-5. Application sends another request to server seeking authorisation. 
-6. Request is successfully authorised. 
+5. Application sends another request to server seeking authorisation.
+6. Request is successfully authorised.
 7. Application saves authorisation header or cookies in cache for next http request and respond with success.
 8. User sends next request to IIB application on cloud.
 9. Application synchronise request and cache before seeking server authorisation.
@@ -25,9 +25,9 @@ When the reader has completed this code pattern, they will understand how to:
 
 ## Included components
 * [IBM Cloud](https://www.ibm.com/cloud/): IBM Cloud is a suite of cloud computing services from IBM that offers both platform as a service (PaaS) and infrastructure as a service (IaaS). With IBM Cloud IaaS, organizations can deploy and access virtualized IT resources.
-* [Docker](https://www.docker.com/): Docker provides container software that is ideal for developers and teams looking to get started and experimenting with container-based applications. 
+* [Docker](https://www.docker.com/): Docker provides container software that is ideal for developers and teams looking to get started and experimenting with container-based applications.
 * [Kubernetes](https://kubernetes.io/): Kubernetes is an open-source container-orchestration system for automating deployment, scaling and management of containerized applications.
-* [SoapUI](https://www.soapui.org/): SoapUI is an open-source web service testing application for service-oriented architectures and representational state transfers. 
+* [SoapUI](https://www.soapui.org/): SoapUI is an open-source web service testing application for service-oriented architectures and representational state transfers.
 
 ## Featured technologies
 * [IBM Integration bus](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm): IIB allows business information to flow between disparate applications across multiple hardware and software platforms. Rules can be applied to the data flowing through the message broker to route and transform the information IIB provides access to various inbuilt nodes which provide ready to use capability.
@@ -35,17 +35,17 @@ When the reader has completed this code pattern, they will understand how to:
 
 # Watch the Video
 
-[![](http://img.youtube.com/vi/pbvq--FGLrs/0.jpg)](https://www.youtube.com/watch?v=pbvq--FGLrs)
+[![](https://img.youtube.com/vi/pbvq--FGLrs/0.jpg)](https://www.youtube.com/watch?v=pbvq--FGLrs)
 
 ## Prerequisites:
 * Access to IBM cloud tools: To interact with IBM cloud, IBM Cloud CLI will need to be installed beforehand. Please follow steps in below link to setup your IBM cloud tools.
-https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
+https://cloud.ibm.com/docs/containers/cs_cli_install.html#cs_cli_install
 
-* IBM Integration Bus toolkit: In this code pattern we will use IIB toolkit version 10.0.0.9 to demo the logic and implementation. This logic can be implemented by any development tool available to you. 
+* IBM Integration Bus toolkit: In this code pattern we will use IIB toolkit version 10.0.0.9 to demo the logic and implementation. This logic can be implemented by any development tool available to you.
 
 # Steps
 1.	[Create Service](#1-create-service)
-2.	[Deploy service locally and test](#2-deploy-service-locally-and-test) 
+2.	[Deploy service locally and test](#2-deploy-service-locally-and-test)
 3.	[Create cluster and deploy on IBM cloud](#3-create-cluster-and-deploy-on-ibm-cloud)
 4.	[Test API on Cloud](#4-test-api-on-cloud)
 
@@ -69,7 +69,7 @@ Below are  brief details on the functionality of each node. These functionalitie
 `Set Payload`: This node simply outputs the response which server has sent after successful authentication.
 
 #### Digest Authentication subflow
-This is the core component which builds the authorization header or cookies. This is a re-usable component for iib tool and can be integrated with different flows in an application. 
+This is the core component which builds the authorization header or cookies. This is a re-usable component for iib tool and can be integrated with different flows in an application.
 ![](images/DAsubflow.jpg)
 
 `SetHTTPDestination`: This node overrides and set the request URL and the request method to be set on HTTP Request node.
@@ -88,7 +88,7 @@ This is the core component which builds the authorization header or cookies. Thi
 
 ![](images/responseSeed.jpg)
 
-4. Creating authorization Header: In this step the all the parameters and their values are set and this header is sent to server for authorisation. 
+4. Creating authorization Header: In this step the all the parameters and their values are set and this header is sent to server for authorisation.
 
 ![](images/authorizationHeader.jpg)
 
@@ -99,9 +99,9 @@ This is the core component which builds the authorization header or cookies. Thi
 ![](images/cookies.jpg)
 
 
-### 2. Deploy service locally and test 
+### 2. Deploy service locally and test
 
-For demo purpose, we will create 2 services. One with authorisation logic and another as a sample client to access the first service. 
+For demo purpose, we will create 2 services. One with authorisation logic and another as a sample client to access the first service.
 
 `DigestAuthentication`: This service contains the logic of implementing digest authorisation. This service will be exposed on uri /digesthttpapi for external clients to access.
 
@@ -125,7 +125,7 @@ Below is the result on testing on local environment.
 
 ![](images/testlocal.jpg)
 
-IBM integration bus provide a very useful functionality called flow exerciser which captures the path which the transaction as taken for each request. 
+IBM integration bus provide a very useful functionality called flow exerciser which captures the path which the transaction as taken for each request.
 
 First request: On the first transaction, we can see that the transaction went through digest authentication subflow to do all the logic for authentication.
 
@@ -208,6 +208,6 @@ bx cs workers mycluster
 
 ## License
 
-This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
+This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-[Apache Software License (ASL) FAQ](http://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
